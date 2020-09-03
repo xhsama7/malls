@@ -1,5 +1,9 @@
 # malls
 
+## If you need a new interface for your practice, please contact coderwhy by wechat.
+
+wechat -> coderwhy003
+
 ## Project setup
 ```
 npm install

@@ -5,7 +5,7 @@
     <recommend-view :recommends="recommends"/>
     <feature-view/>
     <tab-control :titles="['流行','新款','潮流']"></tab-control>
-
+    <goods-list :goods="goods['pop'].list"/>
   </div>
 </template>
 
@@ -14,10 +14,11 @@
   import ShopSwiper from "./childComps/ShopSwiper";
   import RecommendView from "./childComps/RecommendView";
   import FeatureView from "./childComps/FeatureView";
-  import TabControl from "../../components/content/tabControl/TabControl";
+  import TabControl from "components/content/tabControl/TabControl";
+  import GoodsList from "components/content/goods/GoodsList";
 
   import {getShopMultidata} from "network/shop";
-  import {getHomeGoods} from "network/shop";
+  import {getShopGoods} from "network/shop";
 
 
   export default {
@@ -27,7 +28,8 @@
       ShopSwiper,
       RecommendView,
       FeatureView,
-      TabControl
+      TabControl,
+      GoodsList
     },
     data(){
       return{
@@ -36,21 +38,34 @@
         recommends:[],
         goods:{
           'pop':{page:0,list:[]},
-          'news':{page:0,list:[]},
+          'new':{page:0,list:[]},
           'sell':{page:0,list:[]}
         }
       }
     },
     created() {
       //创建时执行网络请求
-      getShopMultidata().then(res => {
-        //将传递的数据保存至变量中，防止内存回收
-        this.banners = res.data.banner.list;
-        this.recommends = res.data.recommend.list
-      })
-      getHomeGoods('pop',1).then(res => {
-        console.log(res)
-      })
+     this.getShopMultidata();
+     //请求商品数据
+     this.getShopGoods('pop');
+     this.getShopGoods('new');
+     this.getShopGoods('sell');
+    },
+    methods:{
+      getShopMultidata(){
+        getShopMultidata().then(res => {
+          //将传递的数据保存至变量中，防止内存回收
+          this.banners = res.data.banner.list;
+          this.recommends = res.data.recommend.list
+        })
+      },
+      getShopGoods(type){
+        const page = this.goods[type].page + 1;
+        getShopGoods(type,page).then(res => {
+          this.goods[type].list.push(...res.data.list); //将数据保存至list中
+          this.goods[type].page += 1;
+        })
+      }
     }
   }
 </script>

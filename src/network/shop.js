@@ -6,7 +6,7 @@ export function getShopMultidata() {
   })
 }
 
-export function getHomeGoods(type,page) {
+export function getShopGoods(type,page) {
   return request({
     url:'home/data',
     params:{
