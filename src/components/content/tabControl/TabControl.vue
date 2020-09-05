@@ -27,6 +27,7 @@
     methods:{
       mClick(index){
         this.currentIndex = index
+        this.$emit('tabClick',index)
       }
     }
   }
@@ -43,7 +44,13 @@
   .tab-control-m{
     flex: 1;
   }
+  .tab-control-m span{
+    padding: 5px;
+  }
   .active{
     color:var(--color-high-text)
+  }
+  .active span{
+    border-botton:3px solid var(--color-tint);
   }
 </style>
