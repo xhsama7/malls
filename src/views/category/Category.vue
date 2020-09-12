@@ -1,57 +1,10 @@
 <template>
-  <div class="wrapper">
-    <ul class="content">
-      <li>分类列表1</li>
-      <li>分类列表2</li>
-      <li>分类列表3</li>
-      <li>分类列表4</li>
-      <li>分类列表5</li>
-      <li>分类列表6</li>
-      <li>分类列表7</li>
-      <li>分类列表8</li>
-      <li>分类列表9</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-      <li>分类列表</li>
-    </ul>
+  <div>
+    <h2>分类</h2>
   </div>
 </template>
 
 <script>
-  import BScroll from 'better-scroll'
   export default {
     name: "Cartgory",
     data(){
@@ -61,12 +14,12 @@
     },
     mounted() {
       //利用better-scroll进行滚动
-      this.scroll = new BScroll(document.querySelector('.wrapper'),{
+      // this.scroll = new BScroll(document.querySelector('.wrapper'),{
        //侦测，值为0,1时都是侦测实时位置
         //值为2：在手指滚动过程中侦测，手指离开后的惯性滚动过程中不侦测
         //值为3：只要是滚动，都侦测
-        probeType:3,
-        click:true, //元素可触发点击事件
+        // probeType:3,
+        // click:true, //元素可触发点击事件
         // scrollX:false, //横向可滑动，默认为false
         // scrollY:true, //纵向可滑动，默认为true
         // bounce:false, //当滚动超过边缘的时候无回弹动画
@@ -80,20 +33,20 @@
         // stepX:window.innerWidth, //横向切换距离为窗口宽度
         // stepY:window.innerHeight, //纵向切换距离为窗口高度
         // pullUpLoad:true //上拉加载更多(boolean / object)
-        })
+        // })
 
         //默认情况下better-scroll是不可以实时监听滚动位置
-        BScroll.on('scroll',(position) => {
-          console.log(position)
-      })
+      //   BScroll.on('scroll',(position) => {
+      //     console.log(position)
+      // })
 
-      BScroll.on('pullingUp',() => {
+      // BScroll.on('pullingUp',() => {
         //发送网络请求，请求更多页的数据
         //等待数据加载完成，并且将新的数据展示出来
-        setTimeout( () => {
-          BScroll.finishPullUp()
-        }, 2000)
-      })
+      //   setTimeout( () => {
+      //     BScroll.finishPullUp()
+      //   }, 2000)
+      // })
     }
   }
 </script>
